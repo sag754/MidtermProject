@@ -26,12 +26,13 @@ else{
 // attack with sword
 if(obj_inputs.button_sqr)
 {
-	obj_player.is_attacking = true;	
+	obj_player.is_attacking = true;
 }
 else
 {
 	obj_player.is_attacking = false;
 }
+
 // toggles Jump button
 if(obj_inputs.button_x)
 {

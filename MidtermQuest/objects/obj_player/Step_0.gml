@@ -3,6 +3,9 @@
 // checks for player input
 check_player_input();
 
+camera_set_view_pos(view_camera[0], x - camera_get_view_width(view_camera[0])/2, 
+			y - camera_get_view_height(view_camera[0])/2);
+
 if(!is_jumping && !is_falling)
 {
 	//sets animation speed back to 1 from 0 at the bottom
