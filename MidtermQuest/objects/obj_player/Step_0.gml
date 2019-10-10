@@ -6,13 +6,13 @@ check_player_input();
 camera_set_view_pos(view_camera[0], x - camera_get_view_width(view_camera[0])/2, 
 			y - camera_get_view_height(view_camera[0])/2);
 
-if(!is_jumping && !is_falling)
+if(!is_jumping && !is_falling && !is_attacking)
 {
 	//sets animation speed back to 1 from 0 at the bottom
 	image_speed = 1;
 	
 	if(!is_falling)
-	can_jump = true;
+		can_jump = true;
 	// determines which way you're facing
 	if(is_facing == "RIGHT")
 	{
@@ -29,7 +29,7 @@ if(!is_jumping && !is_falling)
 			sprite_index = spr_player_idle_left;	
 	}
 }
-else
+else if(!is_attacking)
 {
 	// determines which way we're jumping
 	if(is_facing == "RIGHT")
@@ -63,10 +63,19 @@ else
 // attacking animation
 if(is_attacking)
 {
-	if(is_facing == "RIGHT")
+	show_debug_message("image speed: " + string(image_index));
+	image_speed = 1;
+	
+	if(is_facing == "RIGHT"){
 		sprite_index = spr_player_attack_right;
+	}
 	else
+	{
 		sprite_index = spr_player_attack_left;
+	}
+	if(image_index > 8){
+		is_attacking = false;
+	}
 }
 
 

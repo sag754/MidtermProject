@@ -30,7 +30,7 @@ if(obj_inputs.button_sqr)
 }
 else
 {
-	obj_player.is_attacking = false;
+	//obj_player.is_attacking = false;
 }
 
 // toggles Jump button
