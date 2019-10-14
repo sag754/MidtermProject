@@ -1,8 +1,8 @@
 /// @description initializes variables and sets character
 
-velocity_x = 0;
+velocity_x = 0; 
 velocity_y = 0;
-movespeed = 12;
+movespeed = 8;
 jumpspeed = 18;
 is_facing = "RIGHT";
 is_jumping = false;

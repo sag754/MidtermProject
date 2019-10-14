@@ -2,7 +2,7 @@
 
 state = "IN_GAME";
 
-global.grav = 0.98;
+global.grav = 1;
 global.max_grav = 12;
 
 
