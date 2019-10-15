@@ -10,3 +10,5 @@ is_falling = false;
 can_jump = true;
 has_jumped = false;
 is_attacking = false;
+invinc = 1;
+

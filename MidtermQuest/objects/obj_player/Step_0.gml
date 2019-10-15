@@ -7,6 +7,7 @@ check_player_input();
 camera_set_view_pos(view_camera[0], x - camera_get_view_width(view_camera[0])/2, 
 			0);
 
+
 // determines player states so we can tell when moving, jumping, and attacking
 if(!is_jumping && !is_falling && !is_attacking)
 {
@@ -42,10 +43,10 @@ else if(!is_attacking)                              //if we're not attacking, do
 	{
 		if(!has_jumped)                             // AND has also NOT jumped
 		{
-			if(image_index > 0 && image_index < 5)  //
+			if(image_index > 0 && image_index < 5)  // play jump sprite animation from frame 0 to 4
 			{
-				has_jumped = true;
-				velocity_y = -jumpspeed;
+				has_jumped = true;                  // checks if player is jumping
+				velocity_y = -jumpspeed;            // jump up
 			}
 		}
 	}
@@ -53,9 +54,9 @@ else if(!is_attacking)                              //if we're not attacking, do
 	// stop sprite animation if you jumped
 	if(image_index >= 4 || is_falling)
 	{
-		image_speed = 0;
-		image_index = 4;
-	}
+		image_speed = 0;  // when jumping, starts the initial jump frame
+		image_index = 4;  // when sprite animation for jump completes, stay on frame 4
+	} 
 	
 	
 }
@@ -77,7 +78,6 @@ if(is_attacking)
 	}
 }
 
-
 // enables gravity for jump
 if(velocity_y <= global.max_grav)
 	velocity_y += global.grav;
@@ -90,14 +90,12 @@ if(place_meeting(x + velocity_x, y, obj_wall)){
 		velocity_x = 0;
 }
 
-
+// determines how jump states work with collision 
 if(place_meeting(x + velocity_x, y, obj_wall) &&  place_meeting(x, y + velocity_y, obj_wall) && is_jumping){
-	show_debug_message("jump hit");
 }
 
 // sets up vertical collision with walls
 if(place_meeting(x, y + velocity_y, obj_wall)){
-	//show_debug_message("velocity Y: " + string(velocity_y));
 	while(!place_meeting(x, y + sign(velocity_y), obj_wall))
 		y += sign(velocity_y);
 		
